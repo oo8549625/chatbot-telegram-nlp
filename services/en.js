@@ -35,7 +35,6 @@ module.exports = {
         //wanteat
         this.manager.addAnswer('en', 'wanteat', '肚子餓了！ ')
         //who
-        this.manager.addAnswer('en', 'who', '瘋子！')
         this.manager.addAnswer('en', 'who', '不知道')
 
         await this.manager.train();
