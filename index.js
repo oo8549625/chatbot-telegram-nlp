@@ -7,10 +7,17 @@ const broker = new ServiceBroker({
     cacher: 'Memory'
 })
 
-let [bot] = [
-    require('./services/bot.js')
+let [bot, nlp, en, zh] = [
+    require('./services/bot.js'),
+    require('./services/nlp.js'),
+    require('./services/en.js'),
+    require('./services/zh.js')
 ]
 
 broker.createService(bot)
+broker.createService(nlp)
+broker.createService(en)
+broker.createService(zh)
+
 
 broker.start()

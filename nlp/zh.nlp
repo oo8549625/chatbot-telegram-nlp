@@ -1,0 +1,441 @@
+{
+  "settings": {
+    "languages": [
+      "zh"
+    ]
+  },
+  "nluManager": {
+    "settings": {},
+    "languages": [
+      "zh"
+    ],
+    "intentDomains": {},
+    "domainManagers": {
+      "zh": {
+        "settings": {
+          "language": "zh",
+          "useNoneFeature": false,
+          "config": {
+            "activation": "leaky-relu",
+            "hiddenLayers": [],
+            "iterations": 20000,
+            "learningRate": 0.7,
+            "errorThresh": 0.00005,
+            "momentum": 0.5,
+            "deltaErrorThresh": 0.000001,
+            "maxDecimals": 9,
+            "leakyReluAlpha": 0.08,
+            "timeout": 120000
+          }
+        },
+        "language": "zh",
+        "nluClassName": "BrainNLU",
+        "useMasterDomain": true,
+        "trainByDomain": false,
+        "keepStopwords": true,
+        "stemDict": {
+          "吃,在,我,看,英雄,見,食物": {
+            "domain": "default",
+            "intent": "看見英雄"
+          },
+          "他,吃,我,有,正在,看,英雄,見,食物": {
+            "domain": "default",
+            "intent": "看見英雄"
+          },
+          "吃,想去,我,食物": {
+            "domain": "default",
+            "intent": "想吃"
+          },
+          "我,誰": {
+            "domain": "default",
+            "intent": "某人"
+          },
+          "你,誰": {
+            "domain": "default",
+            "intent": "某人"
+          }
+        },
+        "intentDict": {
+          "看見英雄": "default",
+          "想吃": "default",
+          "某人": "default"
+        },
+        "useStemDict": true,
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "language": "zh",
+              "useNoneFeature": false,
+              "config": {
+                "activation": "leaky-relu",
+                "hiddenLayers": [],
+                "iterations": 20000,
+                "learningRate": 0.7,
+                "errorThresh": 0.00005,
+                "momentum": 0.5,
+                "deltaErrorThresh": 0.000001,
+                "maxDecimals": 9,
+                "leakyReluAlpha": 0.08,
+                "timeout": 120000
+              }
+            },
+            "language": "zh",
+            "keepStopwords": true,
+            "docs": [
+              {
+                "intent": "看見英雄",
+                "utterance": [
+                  "我",
+                  "看",
+                  "見",
+                  "英雄",
+                  "在",
+                  "吃",
+                  "食物"
+                ],
+                "tokens": [
+                  "我",
+                  "看",
+                  "見",
+                  "英雄",
+                  "在",
+                  "吃",
+                  "食物"
+                ]
+              },
+              {
+                "intent": "看見英雄",
+                "utterance": [
+                  "我",
+                  "有",
+                  "看",
+                  "見",
+                  "英雄",
+                  "他",
+                  "正在",
+                  "吃",
+                  "食物"
+                ],
+                "tokens": [
+                  "我",
+                  "有",
+                  "看",
+                  "見",
+                  "英雄",
+                  "他",
+                  "正在",
+                  "吃",
+                  "食物"
+                ]
+              },
+              {
+                "intent": "想吃",
+                "utterance": [
+                  "我",
+                  "想去",
+                  "吃",
+                  "食物"
+                ],
+                "tokens": [
+                  "我",
+                  "想去",
+                  "吃",
+                  "食物"
+                ]
+              },
+              {
+                "intent": "某人",
+                "utterance": [
+                  "我",
+                  "誰"
+                ],
+                "tokens": [
+                  "我",
+                  "誰"
+                ]
+              },
+              {
+                "intent": "某人",
+                "utterance": [
+                  "你",
+                  "誰"
+                ],
+                "tokens": [
+                  "你",
+                  "誰"
+                ]
+              }
+            ],
+            "features": {
+              "我": 4,
+              "看": 2,
+              "見": 2,
+              "英雄": 2,
+              "在": 1,
+              "吃": 3,
+              "食物": 3,
+              "有": 1,
+              "他": 1,
+              "正在": 1,
+              "想去": 1,
+              "誰": 2,
+              "你": 1
+            },
+            "isEditing": false,
+            "className": "BrainNLU",
+            "classifier": {
+              "className": "BrainClassifier",
+              "settings": {
+                "language": "zh",
+                "useNoneFeature": false,
+                "config": {
+                  "activation": "leaky-relu",
+                  "hiddenLayers": [],
+                  "iterations": 20000,
+                  "learningRate": 0.7,
+                  "errorThresh": 0.00005,
+                  "momentum": 0.5,
+                  "deltaErrorThresh": 0.000001,
+                  "maxDecimals": 9,
+                  "leakyReluAlpha": 0.08,
+                  "timeout": 120000
+                }
+              },
+              "labels": [],
+              "network": {
+                "sizes": [
+                  13,
+                  3
+                ],
+                "layers": [
+                  {
+                    "我": {},
+                    "看": {},
+                    "見": {},
+                    "英雄": {},
+                    "在": {},
+                    "吃": {},
+                    "食物": {},
+                    "有": {},
+                    "他": {},
+                    "正在": {},
+                    "想去": {},
+                    "誰": {},
+                    "你": {}
+                  },
+                  {
+                    "看見英雄": {
+                      "bias": 0.133939768,
+                      "weights": {
+                        "我": 0.313971251,
+                        "看": 2.792440653,
+                        "見": 2.792440653,
+                        "英雄": 2.792440653,
+                        "在": 2.089458704,
+                        "吃": 0.784409106,
+                        "食物": 0.784409106,
+                        "有": 0.702982366,
+                        "他": 0.702982366,
+                        "正在": 0.702982366,
+                        "想去": -2.008031368,
+                        "誰": -0.515725672,
+                        "你": -0.045287739
+                      }
+                    },
+                    "想吃": {
+                      "bias": 0.568055968,
+                      "weights": {
+                        "我": 1.233582616,
+                        "看": -2.018249989,
+                        "見": -2.018249989,
+                        "英雄": -2.018249989,
+                        "在": -1.483203292,
+                        "吃": 2.876414776,
+                        "食物": 2.876414776,
+                        "有": -0.535046995,
+                        "他": -0.535046995,
+                        "正在": -0.535046995,
+                        "想去": 4.894664288,
+                        "誰": -1.737140775,
+                        "你": -0.094308488
+                      }
+                    },
+                    "某人": {
+                      "bias": 2.650861115,
+                      "weights": {
+                        "我": 2.46628046,
+                        "看": -0.53882277,
+                        "見": -0.53882277,
+                        "英雄": -0.53882277,
+                        "在": -0.357282609,
+                        "吃": -1.862039089,
+                        "食物": -1.862039089,
+                        "有": -0.181540042,
+                        "他": -0.181540042,
+                        "正在": -0.181540042,
+                        "想去": -1.323216438,
+                        "誰": 7.169114113,
+                        "你": 2.84079361
+                      }
+                    }
+                  }
+                ],
+                "trainOpts": {
+                  "iterations": 20000,
+                  "errorThresh": 0.00005,
+                  "deltaErrorThresh": 0.000001,
+                  "learningRate": 0.7,
+                  "momentum": 0.5,
+                  "leakyReluAlpha": 0.08,
+                  "maxDecimals": 9,
+                  "log": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "extraSentences": [
+      [
+        "zh",
+        "我看見 %英雄% 在吃 %食物%"
+      ],
+      [
+        "zh",
+        "我有看見 %英雄%, 他正在吃 %食物%"
+      ],
+      [
+        "zh",
+        "我想去吃 %食物%"
+      ],
+      [
+        "zh",
+        "我誰"
+      ],
+      [
+        "zh",
+        "你誰"
+      ]
+    ]
+  },
+  "nerManager": {
+    "settings": {},
+    "threshold": 0.8,
+    "builtins": [
+      "Number",
+      "Ordinal",
+      "Percentage",
+      "Age",
+      "Currency",
+      "Dimension",
+      "Temperature",
+      "DateTime",
+      "PhoneNumber",
+      "IpAddress",
+      "Boolean",
+      "Email",
+      "Hashtag",
+      "URL"
+    ],
+    "namedEntities": {
+      "英雄": {
+        "type": "enum",
+        "name": "英雄",
+        "localeFallback": {
+          "*": "en"
+        },
+        "locales": {
+          "zh": {
+            "蜘蛛人": [
+              "蜘蛛人"
+            ],
+            "鋼鐵人": [
+              "鋼鐵人",
+              "鋼鐵俠"
+            ],
+            "索爾": [
+              "索爾",
+              "雷神索爾"
+            ]
+          }
+        }
+      },
+      "食物": {
+        "type": "enum",
+        "name": "食物",
+        "localeFallback": {
+          "*": "en"
+        },
+        "locales": {
+          "zh": {
+            "漢堡": [
+              "漢堡"
+            ],
+            "披薩": [
+              "披薩"
+            ],
+            "義大利麵": [
+              "義大利麵"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "slotManager": {
+    "看見英雄": {
+      "英雄": {
+        "intent": "看見英雄",
+        "entity": "英雄",
+        "mandatory": false,
+        "locales": {}
+      },
+      "食物": {
+        "intent": "看見英雄",
+        "entity": "食物",
+        "mandatory": false,
+        "locales": {}
+      }
+    },
+    "想吃": {
+      "食物": {
+        "intent": "想吃",
+        "entity": "食物",
+        "mandatory": false,
+        "locales": {}
+      }
+    }
+  },
+  "responses": {
+    "zh": {
+      "看見英雄": [
+        {
+          "response": "真的假的！"
+        },
+        {
+          "response": "在哪裡看見的？"
+        }
+      ],
+      "想吃": [
+        {
+          "response": "肚子餓了！ "
+        }
+      ],
+      "某人": [
+        {
+          "response": "瘋子！"
+        }
+      ],
+      "謀人": [
+        {
+          "response": "不知道"
+        }
+      ]
+    }
+  },
+  "actions": {},
+  "utteranceDict": {
+    "?": "help"
+  }
+}

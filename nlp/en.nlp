@@ -1,0 +1,461 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ]
+  },
+  "nluManager": {
+    "settings": {},
+    "languages": [
+      "en"
+    ],
+    "intentDomains": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "language": "en",
+          "useNoneFeature": true,
+          "config": {
+            "activation": "leaky-relu",
+            "hiddenLayers": [],
+            "iterations": 20000,
+            "learningRate": 0.7,
+            "errorThresh": 0.00005,
+            "momentum": 0.5,
+            "deltaErrorThresh": 0.000001,
+            "maxDecimals": 9,
+            "leakyReluAlpha": 0.08,
+            "timeout": 120000
+          }
+        },
+        "language": "en",
+        "nluClassName": "BrainNLU",
+        "useMasterDomain": true,
+        "trainByDomain": false,
+        "keepStopwords": true,
+        "stemDict": {
+          "eat,food,hero,i,saw": {
+            "domain": "default",
+            "intent": "sawhero"
+          },
+          "eat,food,have,he,hero,i,seen,was": {
+            "domain": "default",
+            "intent": "sawhero"
+          },
+          "eat,food,i,to,want": {
+            "domain": "default",
+            "intent": "wanteat"
+          },
+          "who,who": {
+            "domain": "default",
+            "intent": "who"
+          }
+        },
+        "intentDict": {
+          "sawhero": "default",
+          "wanteat": "default",
+          "who": "default"
+        },
+        "useStemDict": true,
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "language": "en",
+              "useNoneFeature": true,
+              "config": {
+                "activation": "leaky-relu",
+                "hiddenLayers": [],
+                "iterations": 20000,
+                "learningRate": 0.7,
+                "errorThresh": 0.00005,
+                "momentum": 0.5,
+                "deltaErrorThresh": 0.000001,
+                "maxDecimals": 9,
+                "leakyReluAlpha": 0.08,
+                "timeout": 120000
+              }
+            },
+            "language": "en",
+            "keepStopwords": true,
+            "docs": [
+              {
+                "intent": "sawhero",
+                "utterance": [
+                  "i",
+                  "saw",
+                  "hero",
+                  "eat",
+                  "food"
+                ],
+                "tokens": [
+                  "i",
+                  "saw",
+                  "hero",
+                  "eat",
+                  "food"
+                ]
+              },
+              {
+                "intent": "sawhero",
+                "utterance": [
+                  "i",
+                  "have",
+                  "seen",
+                  "hero",
+                  "he",
+                  "was",
+                  "eat",
+                  "food"
+                ],
+                "tokens": [
+                  "i",
+                  "have",
+                  "seen",
+                  "hero",
+                  "he",
+                  "was",
+                  "eat",
+                  "food"
+                ]
+              },
+              {
+                "intent": "wanteat",
+                "utterance": [
+                  "i",
+                  "want",
+                  "to",
+                  "eat",
+                  "food"
+                ],
+                "tokens": [
+                  "i",
+                  "want",
+                  "to",
+                  "eat",
+                  "food"
+                ]
+              },
+              {
+                "intent": "who",
+                "utterance": [
+                  "who",
+                  "who"
+                ],
+                "tokens": [
+                  "who",
+                  "who"
+                ]
+              }
+            ],
+            "features": {
+              "i": 3,
+              "saw": 1,
+              "hero": 2,
+              "eat": 3,
+              "food": 3,
+              "have": 1,
+              "seen": 1,
+              "he": 1,
+              "was": 1,
+              "want": 1,
+              "to": 1,
+              "who": 2
+            },
+            "isEditing": false,
+            "className": "BrainNLU",
+            "classifier": {
+              "className": "BrainClassifier",
+              "settings": {
+                "language": "en",
+                "useNoneFeature": true,
+                "config": {
+                  "activation": "leaky-relu",
+                  "hiddenLayers": [],
+                  "iterations": 20000,
+                  "learningRate": 0.7,
+                  "errorThresh": 0.00005,
+                  "momentum": 0.5,
+                  "deltaErrorThresh": 0.000001,
+                  "maxDecimals": 9,
+                  "leakyReluAlpha": 0.08,
+                  "timeout": 120000
+                }
+              },
+              "labels": [],
+              "network": {
+                "sizes": [
+                  13,
+                  4
+                ],
+                "layers": [
+                  {
+                    "i": {},
+                    "saw": {},
+                    "hero": {},
+                    "eat": {},
+                    "food": {},
+                    "have": {},
+                    "seen": {},
+                    "he": {},
+                    "was": {},
+                    "want": {},
+                    "to": {},
+                    "who": {},
+                    "nonefeature": {}
+                  },
+                  {
+                    "sawhero": {
+                      "bias": 0.214775535,
+                      "weights": {
+                        "i": 1.610372066,
+                        "saw": 3.31276989,
+                        "hero": 4.14100647,
+                        "eat": 1.610372066,
+                        "food": 1.610372066,
+                        "have": 0.828236163,
+                        "seen": 0.828236163,
+                        "he": 0.828236163,
+                        "was": 0.828236163,
+                        "want": -2.530632973,
+                        "to": -2.530632973,
+                        "who": -0.336390048,
+                        "nonefeature": -0.211048812
+                      }
+                    },
+                    "wanteat": {
+                      "bias": 0.189513722,
+                      "weights": {
+                        "i": 1.438325405,
+                        "saw": -1.955082774,
+                        "hero": -2.559285402,
+                        "eat": 1.438325405,
+                        "food": 1.438325405,
+                        "have": -0.604202867,
+                        "seen": -0.604202867,
+                        "he": -0.604202867,
+                        "was": -0.604202867,
+                        "want": 3.997609377,
+                        "to": 3.997609377,
+                        "who": -0.312575698,
+                        "nonefeature": -0.186627388
+                      }
+                    },
+                    "who": {
+                      "bias": 1.752658775,
+                      "weights": {
+                        "i": -0.631823421,
+                        "saw": -0.26041612,
+                        "hero": -0.343608886,
+                        "eat": -0.631823421,
+                        "food": -0.631823421,
+                        "have": -0.083192728,
+                        "seen": -0.083192728,
+                        "he": -0.083192728,
+                        "was": -0.083192728,
+                        "want": -0.288214594,
+                        "to": -0.288214594,
+                        "who": 10.688080788,
+                        "nonefeature": -1.636052132
+                      }
+                    },
+                    "None": {
+                      "bias": 6.752275594,
+                      "weights": {
+                        "i": -1.708097458,
+                        "saw": -0.719652176,
+                        "hero": -0.900558531,
+                        "eat": -1.708097458,
+                        "food": -1.708097458,
+                        "have": -0.180905893,
+                        "seen": -0.180905893,
+                        "he": -0.180905893,
+                        "was": -0.180905893,
+                        "want": -0.807539403,
+                        "to": -0.807539403,
+                        "who": -6.606951714,
+                        "nonefeature": 5.451643467
+                      }
+                    }
+                  }
+                ],
+                "trainOpts": {
+                  "iterations": 20000,
+                  "errorThresh": 0.00005,
+                  "deltaErrorThresh": 0.000001,
+                  "learningRate": 0.7,
+                  "momentum": 0.5,
+                  "leakyReluAlpha": 0.08,
+                  "maxDecimals": 9,
+                  "log": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "extraSentences": [
+      [
+        "en",
+        "I saw %hero% eating %food%"
+      ],
+      [
+        "en",
+        "I have seen %hero%, he was eating %food%"
+      ],
+      [
+        "en",
+        "I want to eat %food%"
+      ],
+      [
+        "en",
+        "who %who%"
+      ]
+    ]
+  },
+  "nerManager": {
+    "settings": {},
+    "threshold": 0.8,
+    "builtins": [
+      "Number",
+      "Ordinal",
+      "Percentage",
+      "Age",
+      "Currency",
+      "Dimension",
+      "Temperature",
+      "DateTime",
+      "PhoneNumber",
+      "IpAddress",
+      "Boolean",
+      "Email",
+      "Hashtag",
+      "URL"
+    ],
+    "namedEntities": {
+      "hero": {
+        "type": "enum",
+        "name": "hero",
+        "localeFallback": {
+          "*": "en"
+        },
+        "locales": {
+          "en": {
+            "spiderman": [
+              "Spiderman",
+              "Spider-man"
+            ],
+            "iron man": [
+              "iron man",
+              "iron-man"
+            ],
+            "thor": [
+              "Thor"
+            ]
+          }
+        }
+      },
+      "food": {
+        "type": "enum",
+        "name": "food",
+        "localeFallback": {
+          "*": "en"
+        },
+        "locales": {
+          "en": {
+            "burguer": [
+              "Burguer",
+              "Hamburguer"
+            ],
+            "pizza": [
+              "pizza"
+            ],
+            "pasta": [
+              "Pasta",
+              "spaghetti"
+            ]
+          }
+        }
+      },
+      "who": {
+        "type": "enum",
+        "name": "who",
+        "localeFallback": {
+          "*": "en"
+        },
+        "locales": {
+          "en": {
+            "who": [
+              "am I",
+              "is he",
+              "is she",
+              "are you",
+              "are they"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "slotManager": {
+    "sawhero": {
+      "hero": {
+        "intent": "sawhero",
+        "entity": "hero",
+        "mandatory": false,
+        "locales": {}
+      },
+      "food": {
+        "intent": "sawhero",
+        "entity": "food",
+        "mandatory": false,
+        "locales": {}
+      }
+    },
+    "wanteat": {
+      "food": {
+        "intent": "wanteat",
+        "entity": "food",
+        "mandatory": false,
+        "locales": {}
+      }
+    },
+    "who": {
+      "who": {
+        "intent": "who",
+        "entity": "who",
+        "mandatory": false,
+        "locales": {}
+      }
+    }
+  },
+  "responses": {
+    "en": {
+      "sawhero": [
+        {
+          "response": "真的假的！"
+        },
+        {
+          "response": "在哪裡看見的？"
+        }
+      ],
+      "wanteat": [
+        {
+          "response": "肚子餓了！ "
+        }
+      ],
+      "who": [
+        {
+          "response": "瘋子！"
+        },
+        {
+          "response": "不知道"
+        }
+      ]
+    }
+  },
+  "actions": {},
+  "utteranceDict": {
+    "?": "help"
+  }
+}

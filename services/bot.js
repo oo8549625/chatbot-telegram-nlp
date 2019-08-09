@@ -12,13 +12,21 @@ module.exports = {
 
     started() {
         // Listen for any kind of message..
-        this.bot.on('message', (msg) => {
-            const chatId = msg.chat.id;
-
-            // send a message to the chat acknowledging receipt of their message
-            this.bot.sendMessage(chatId, 'Received your message');
+        this.bot.on('message', (msg) => {  
+            this.broker.call('nlp.guessLanguage', msg)
         });
-    }
+    },
 
+    actions:{
+        replyMessage(ctx){
+            let[chatID, msg]=[
+                ctx.params.chatID||818712881,
+                ctx.params.msg
+            ]
+            let bot = this.bot
+            //console.log(JSON.stringify(msg))
+            bot.sendMessage(chatID, msg)
+        }
+    }
 
 }
