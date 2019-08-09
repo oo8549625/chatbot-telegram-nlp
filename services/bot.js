@@ -3,7 +3,8 @@ const TelegramBot = require('node-telegram-bot-api')
 module.exports = {
     name: 'bot',
     settings: {
-        token: require('./info.json').token
+        token: require('./info.json').token,
+        name: require('./info.json').name
     },
 
     created() {

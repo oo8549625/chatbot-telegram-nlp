@@ -18,6 +18,8 @@ module.exports = {
         this.manager.addNamedEntityText('食物', '漢堡', ['zh'], ['漢堡']);
         this.manager.addNamedEntityText('食物', '披薩', ['zh'], ['披薩']);
         this.manager.addNamedEntityText('食物', '義大利麵', ['zh'], ['義大利麵']);
+        //music
+        this.manager.addNamedEntityText('音樂', '音樂', ['zh'], ['歌', '音樂']);
 
 
         //sawhero
@@ -28,6 +30,8 @@ module.exports = {
         //who
         this.manager.addDocument('zh', '我誰', '某人');
         this.manager.addDocument('zh', '你誰', '某人');
+        //music
+        this.manager.addDocument('zh', '播％音樂％', '音樂')
         
 
         //sawhero
@@ -38,6 +42,9 @@ module.exports = {
         //who
         this.manager.addAnswer('zh', '某人', '瘋子！')
         this.manager.addAnswer('zh', '謀人', '不知道')
+        //music
+        this.manager.addAnswer('zh', '音樂', '已播放！')
+        this.manager.addAnswer('zh', '音樂', '開播！')
 
         await this.manager.train();
         this.manager.save(this.settings.filename);
