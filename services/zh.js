@@ -40,7 +40,6 @@ module.exports = {
         //wanteat
         this.manager.addAnswer('zh', '想吃', '肚子餓了！ ')
         //who
-        this.manager.addAnswer('zh', '某人', '瘋子！')
         this.manager.addAnswer('zh', '謀人', '不知道')
         //music
         this.manager.addAnswer('zh', '音樂', '已播放！')
