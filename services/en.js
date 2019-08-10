@@ -3,11 +3,12 @@ const { NlpManager } = require('node-nlp');
 module.exports = {
     name: 'en',
     settings: {
-        filename: './nlp/en.nlp'
+        filename: './nlp_data/en.nlp'
     },
 
     async created() {
         this.manager = new NlpManager({ languages: ['en'] });
+
         //hero
         this.manager.addNamedEntityText('hero', 'spiderman', ['en'], ['Spiderman', 'Spider-man']);
         this.manager.addNamedEntityText('hero', 'iron man', ['en'], ['iron man', 'iron-man']);
@@ -47,14 +48,17 @@ module.exports = {
 
     actions: {
         process(ctx) {
-            let [text] = [
+            let [chatID, text] = [
+                ctx.params.chatID,
                 ctx.params.text
             ]
             this.manager
                 .process('en', text)
                 .then(result => {
-                    let msg = result.answer
-                    this.broker.call('bot.replyMessage', { msg })
+                    let answer = result.answer
+                    let unknowMsg = "我不能理解"
+                    let msg = answer ? answer : unknowMsg
+                    this.broker.call('bot.replyMessage', { chatID, msg })
                 });
         }
     }

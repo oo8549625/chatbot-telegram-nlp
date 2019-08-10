@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  nlp:
+    build: .
+    image: owen0222/nlp
+    container_name: nlp
+    hostname: nlp
+    network_mode: host
+    restart: always
+    volumes: 
+      - nlp:/usr/src/data/nlp_data
+
+volumes:
+  nlp:

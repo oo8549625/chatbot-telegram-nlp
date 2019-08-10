@@ -18,8 +18,9 @@ module.exports = {
                 ctx.params.text
             ]
             let msg = this.language.guessBest( text, ['zh','en'])
-            if(msg.score > 0) this.broker.call(`${msg.alpha2}.process`, {text})
-            //this.broker.call('bot.replyMessage', {chatID, msg})
+            let unknowMsg = "你說什麼？"
+            if(msg.score > 0) this.broker.call(`${msg.alpha2}.process`, {chatID, text})
+            else this.broker.call('bot.replyMessage', {chatID, unknowMsg})
         }
     },
 

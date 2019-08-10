@@ -3,8 +3,8 @@ const TelegramBot = require('node-telegram-bot-api')
 module.exports = {
     name: 'bot',
     settings: {
-        token: require('./info.json').token,
-        name: require('./info.json').name
+        token: process.env.BOT_TOKEN || require('./info.json').token,
+        name: process.env.BOT_NAME || require('./info.json').name
     },
 
     created() {
@@ -21,7 +21,7 @@ module.exports = {
     actions:{
         replyMessage(ctx){
             let[chatID, msg]=[
-                ctx.params.chatID||818712881,
+                ctx.params.chatID,
                 ctx.params.msg
             ]
             let bot = this.bot

@@ -3,7 +3,7 @@ const { NlpManager } = require('node-nlp');
 module.exports = {
     name: 'zh',
     settings: {
-        filename: './nlp/zh.nlp'
+        filename: './nlp_data/zh.nlp'
     },
 
     async created() {
@@ -55,14 +55,17 @@ module.exports = {
 
     actions: {
         process(ctx) {
-            let [text] = [
+            let [chatID, text] = [
+                ctx.params.chatID,
                 ctx.params.text
             ]
             this.manager
                 .process('zh', text)
                 .then(result => {
-                    let msg = result.answer
-                    this.broker.call('bot.replyMessage', { msg })
+                    let answer = result.answer
+                    let unknowMsg = "我不能理解"
+                    let msg = answer ? answer : unknowMsg
+                    this.broker.call('bot.replyMessage', { chatID, msg })
                 });
         }
     }
