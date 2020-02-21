@@ -7,13 +7,9 @@ module.exports = {
     },
 
     async created() {
-        this.manager = new NlpManager({ languages: ['zh'] });
+        this.manager = new NlpManager({languages: ['zh'], threshold: 0.8, nlu:{useNoneFeatures: false}});
 
 
-        //hero
-        this.manager.addNamedEntityText('英雄', '蜘蛛人', ['zh'], ['蜘蛛人']);
-        this.manager.addNamedEntityText('英雄', '鋼鐵人', ['zh'], ['鋼鐵人', '鋼鐵俠']);
-        this.manager.addNamedEntityText('英雄', '索爾', ['zh'], ['索爾', '雷神索爾']);
         //food
         this.manager.addNamedEntityText('食物', '漢堡', ['zh'], ['漢堡']);
         this.manager.addNamedEntityText('食物', '披薩', ['zh'], ['披薩']);
@@ -22,9 +18,7 @@ module.exports = {
         this.manager.addNamedEntityText('音樂', '音樂', ['zh'], ['歌', '音樂']);
 
 
-        //sawhero
-        this.manager.addDocument('zh', '我看見 %英雄% 在吃 %食物%', '看見英雄');
-        this.manager.addDocument('zh', '我有看見 %英雄%, 他正在吃 %食物%', '看見英雄');
+
         //wanteat
         this.manager.addDocument('zh', '我想去吃 %食物%', '想吃');
         //who
@@ -34,9 +28,7 @@ module.exports = {
         this.manager.addDocument('zh', '播％音樂％', '音樂')
         
 
-        //sawhero
-        this.manager.addAnswer('zh', '看見英雄', '真的假的！')
-        this.manager.addAnswer('zh', '看見英雄', '在哪裡看見的？')
+
         //wanteat
         this.manager.addAnswer('zh', '想吃', '肚子餓了！ ')
         //who
@@ -63,7 +55,7 @@ module.exports = {
                 .process('zh', text)
                 .then(result => {
                     let answer = result.answer
-                    let unknowMsg = "我不能理解"
+                    let unknowMsg = "抱歉, 我不能理解"
                     let msg = answer ? answer : unknowMsg
                     this.broker.call('bot.replyMessage', { chatID, msg })
                 });

@@ -7,12 +7,8 @@ module.exports = {
     },
 
     async created() {
-        this.manager = new NlpManager({ languages: ['en'] });
+        this.manager = new NlpManager({ languages: ['en'], nlu:{useNoneFeatures: false} });
 
-        //hero
-        this.manager.addNamedEntityText('hero', 'spiderman', ['en'], ['Spiderman', 'Spider-man']);
-        this.manager.addNamedEntityText('hero', 'iron man', ['en'], ['iron man', 'iron-man']);
-        this.manager.addNamedEntityText('hero', 'thor', ['en'], ['Thor']);
         //food
         this.manager.addNamedEntityText('food', 'burguer', ['en'], ['Burguer', 'Hamburguer']);
         this.manager.addNamedEntityText('food', 'pizza', ['en'], ['pizza']);
@@ -20,19 +16,11 @@ module.exports = {
         //who
         this.manager.addNamedEntityText('who', 'who', ['en'], ['am I', 'is he', 'is she', 'are you', 'are they']);
 
-
-        //sawhero
-        this.manager.addDocument('en', 'I saw %hero% eating %food%', 'sawhero');
-        this.manager.addDocument('en', 'I have seen %hero%, he was eating %food%', 'sawhero');
         //wanteat
         this.manager.addDocument('en', 'I want to eat %food%', 'wanteat');
         //who
         this.manager.addDocument('en', 'who %who%', 'who');
 
-
-        //sawhero
-        this.manager.addAnswer('en', 'sawhero', '真的假的！')
-        this.manager.addAnswer('en', 'sawhero', '在哪裡看見的？')
         //wanteat
         this.manager.addAnswer('en', 'wanteat', '肚子餓了！ ')
         //who
@@ -56,7 +44,7 @@ module.exports = {
                 .process('en', text)
                 .then(result => {
                     let answer = result.answer
-                    let unknowMsg = "我不能理解"
+                    let unknowMsg = "抱歉, 我不能理解"
                     let msg = answer ? answer : unknowMsg
                     this.broker.call('bot.replyMessage', { chatID, msg })
                 });
