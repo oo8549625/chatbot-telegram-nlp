@@ -9,8 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "moleculer": "^0.13.9",
-    "node-nlp": "^3.5.0",
-    "node-telegram-bot-api": "^0.30.0"
+    "moleculer": "^0.14.8",
+    "node-nlp": "^4.8.1",
+    "node-telegram-bot-api": "^0.50.0"
   }
 }
